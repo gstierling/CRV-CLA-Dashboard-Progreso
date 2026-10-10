@@ -297,8 +297,7 @@ async function fetchData(){
   }
   if(parsed){
     const newLast=latestTS(parsed), curLast=latestTS(records);
-    if(newLast>=curLast && parsed.length>=records.length) records=parsed;
-    else if(newLast>curLast) records=parsed;
+    if(parsed.length>=records.length || newLast>curLast) records=parsed;
     document.getElementById("error-msg").style.display="none";
   } else if(lastErr && records.length===0){
     const el=document.getElementById("error-msg");
